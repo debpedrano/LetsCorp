@@ -8,12 +8,45 @@ android {
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
+        // enable multi dex
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    // config release types
+    flavorDimensions "default"
+    productFlavors {
+        dev {
+            dimension "default"
+            buildConfigField "String", "HOST", "\"fapiao-dev.glority.cn\""
+        }
+        stage {
+            dimension "default"
+            buildConfigField "String", "HOST", "\"fapiao-stg.glority.cn\""
+        }
+        prod {
+            dimension "default"
+            buildConfigField "String", "HOST", "\"fapiao.glority.cn\""
+        }
+    }
+    // use data binding
+    dataBinding {
+        enabled = true
+    }
+    // use java 8 language
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    // use external libs folder
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
         }
     }
 }
@@ -31,5 +64,12 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:$dagger"
     annotationProcessor "com.google.dagger:dagger-compiler:$dagger"
     annotationProcessor "com.google.dagger:dagger-android-processor:$dagger"
+    // use fabric
+    implementation('com.crashlytics.sdk.android:crashlytics:2.9.2@aar') {
+        transitive = true
+    }
+    // app debug tools
+    implementation 'com.facebook.stetho:stetho:1.5.0'
+    // modules
     implementation project(':commons')
 }

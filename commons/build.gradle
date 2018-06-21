@@ -64,4 +64,6 @@ dependencies {
     implementation 'commons-io:commons-io:2.5'
     // image compress
     implementation 'top.zibin:Luban:1.1.3'
+    // recycler
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
 }
