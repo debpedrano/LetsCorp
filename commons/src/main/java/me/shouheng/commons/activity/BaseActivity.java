@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
@@ -13,6 +15,7 @@ import me.shouheng.commons.R;
 import me.shouheng.commons.listener.OnGetPermissionCallback;
 import me.shouheng.commons.util.PalmUtils;
 import me.shouheng.commons.util.PermissionUtils;
+import me.shouheng.commons.util.ThemeUtils;
 import me.shouheng.commons.util.ToastUtils;
 
 /**
@@ -24,6 +27,12 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public void setOnGetPermissionCallback(OnGetPermissionCallback onGetPermissionCallback) {
         this.onGetPermissionCallback = onGetPermissionCallback;
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ThemeUtils.customStatusBar(this);
     }
 
     @Override

@@ -2,6 +2,10 @@ package me.shouheng.commons;
 
 import org.junit.Test;
 
+import java.util.Date;
+
+import me.shouheng.commons.util.TimeUtils;
+
 import static org.junit.Assert.*;
 
 /**
@@ -10,8 +14,9 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
+
     @Test
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
+    public void timeUtils_getLongDate() {
+        assertEquals("", TimeUtils.getLongDate(new Date()));
     }
 }

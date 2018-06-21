@@ -30,6 +30,10 @@ android {
             jniLibs.srcDirs = ['libs']
         }
     }
+    // test options
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {

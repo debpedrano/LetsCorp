@@ -33,21 +33,21 @@ public class TimeUtils {
         }
     }
 
-    public static String formatDate(Date date, DateFormat dateFormat) {
-        return date == null ? "null" : new SimpleDateFormat(dateFormat.format, Locale.getDefault()).format(date);
-    }
-
     public static Date from(String strDate) {
         return new DateTime(strDate).toDate();
     }
 
-    public static String getLongDate(Context context, Date date){
-        int flags = DateUtils.FORMAT_ABBREV_MONTH;
-        flags = flags | DateUtils.FORMAT_SHOW_YEAR;
-        return DateUtils.formatDateTime(context, date.getTime(), flags);
+    public static String formatDate(Date date, DateFormat dateFormat) {
+        return date == null ? "" : new SimpleDateFormat(dateFormat.format, Locale.getDefault()).format(date);
     }
 
-    public static String getLongDateWithWeekday(Context context, Date date){
+    public static String getLongDate(Date date) {
+        int flags = DateUtils.FORMAT_ABBREV_MONTH;
+        flags = flags | DateUtils.FORMAT_SHOW_YEAR;
+        return DateUtils.formatDateTime(BaseApplication.getContext(), date.getTime(), flags);
+    }
+
+    public static String getLongDateWithWeekday(Context context, Date date) {
         int flags = DateUtils.FORMAT_ABBREV_MONTH;
         flags = flags | DateUtils.FORMAT_SHOW_YEAR;
         return DateUtils.formatDateTime(context, date.getTime(), flags);

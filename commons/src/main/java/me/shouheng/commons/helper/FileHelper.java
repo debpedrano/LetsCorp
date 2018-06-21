@@ -40,6 +40,7 @@ import java.util.Locale;
 import me.shouheng.commons.BuildConfig;
 import me.shouheng.commons.R;
 import me.shouheng.commons.config.BaseConstants;
+import me.shouheng.commons.listener.OnSavedToGalleryListener;
 import me.shouheng.commons.manager.MediaStoreFactory;
 import me.shouheng.commons.manager.ModelFactory;
 import me.shouheng.commons.model.AttachmentFile;
@@ -53,6 +54,7 @@ import static java.lang.Long.parseLong;
 public class FileHelper {
 
     private final static String DATE_FORMAT_SORTABLE = "yyyyMMdd_HHmmss_SSS";
+
     private static final String ANSI_INVALID_CHARACTERS = "\\/:*?\"<>|";
 
     private static boolean isStorageWritable() {
@@ -595,8 +597,4 @@ public class FileHelper {
         FileHelper.saveImageToGallery(context, img, true, onSavedToGalleryListener);
     }
     // endregion
-
-    public interface OnSavedToGalleryListener {
-        void OnSavedToGallery(File file);
-    }
 }
