@@ -3,9 +3,6 @@ package me.shouheng.letscorp.view.main.fragment;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
-import android.view.View;
-
-import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import java.util.Objects;
 
@@ -16,7 +13,9 @@ import me.shouheng.commons.widget.DividerItemDecoration;
 import me.shouheng.letscorp.R;
 import me.shouheng.letscorp.databinding.FragmentPostListBinding;
 import me.shouheng.letscorp.model.CategoryInfo;
+import me.shouheng.letscorp.model.PostItem;
 import me.shouheng.letscorp.view.CommonDaggerFragment;
+import me.shouheng.letscorp.view.article.ArticleActivity;
 import me.shouheng.letscorp.view.main.ArticleAdapter;
 import me.shouheng.letscorp.viewmodel.LetsCorpViewModel;
 
@@ -69,12 +68,8 @@ public class PostListFragment extends CommonDaggerFragment<FragmentPostListBindi
         getBinding().srl.setOnRefreshListener(this);
 
         adapter = new ArticleAdapter();
-        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-
-            }
-        });
+        adapter.setOnItemClickListener((adapter, view, position) ->
+                ArticleActivity.start(PostListFragment.this, (PostItem) adapter.getItem(position)));
         adapter.setEnableLoadMore(true);
         adapter.setOnLoadMoreListener(() -> {
             if (loading) return;

@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name=".PalmApp">
+
         <activity android:name=".view.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,11 +21,14 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".view.article.ArticleActivity"/>
+
         <!-- region fabric -->
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="aa14224ea2102fef301d211dac552635f37b1f9e" />
         <!-- endregion -->
+
     </application>
 
 </manifest>
