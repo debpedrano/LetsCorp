@@ -4,4 +4,14 @@
     <string name="nav_bottom_item_1">主界面</string>
     <string name="nav_bottom_item_2">收藏</string>
     <string name="nav_bottom_item_3">我</string>
+
+    <string name="lets_corp_category_all">全部</string>
+    <string name="lets_corp_category_economic">经济</string>
+    <string name="lets_corp_category_news">新闻</string>
+    <string name="lets_corp_category_view">观点</string>
+    <string name="lets_corp_category_politics">政治</string>
+    <string name="lets_corp_category_gallery">图片</string>
+    <string name="lets_corp_category_rumor">传闻</string>
+    <string name="lets_corp_category_tech">科技</string>
+    <string name="lets_corp_category_history">历史</string>
 </resources>

@@ -5,6 +5,7 @@ import dagger.android.ContributesAndroidInjector;
 import me.shouheng.letscorp.view.main.fragment.AccountFragment;
 import me.shouheng.letscorp.view.main.fragment.FavoriteFragment;
 import me.shouheng.letscorp.view.main.fragment.PagerFragment;
+import me.shouheng.letscorp.view.main.fragment.PostListFragment;
 
 /**
  * @author shouh
@@ -21,4 +22,7 @@ public abstract class FragmentModule {
 
     @ContributesAndroidInjector
     abstract AccountFragment contributeAccountFragment();
+
+    @ContributesAndroidInjector
+    abstract PostListFragment contributePostListFragment();
 }
