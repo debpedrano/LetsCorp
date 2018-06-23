@@ -64,6 +64,7 @@ public class ArticleFragment extends CommonDaggerFragment<FragmentArticleBinding
 
         getBinding().rv.setAdapter(adapter);
         getBinding().rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        getBinding().rv.setEmptyView(getBinding().pb);
     }
 
     private void fetchPostDetail() {

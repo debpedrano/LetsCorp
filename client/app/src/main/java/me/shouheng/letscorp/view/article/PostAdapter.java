@@ -1,6 +1,7 @@
 package me.shouheng.letscorp.view.article;
 
 import android.text.Html;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.widget.ImageView;
 
@@ -69,10 +70,13 @@ public class PostAdapter extends BaseMultiItemQuickAdapter<PostAdapter.Segment, 
                         .load(url)
                         .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                         .preload();
-                segments.add(new Segment(SegmentType.IMAGE, url));
+                segments.add(new Segment(SegmentType.IMAGE, url, null));
             }
         } else {
-            segments.add(new Segment(quote ? SegmentType.QUOTE : SegmentType.PLAIN, e.html()));
+            SpannableStringBuilder sb = new SpannableStringBuilder();
+            sb.append("\t\t\t\t");
+            sb.append(Html.fromHtml(e.html().replace("<br>", "<br>&nbsp;&nbsp;&nbsp;&nbsp;")));
+            segments.add(new Segment(quote ? SegmentType.QUOTE : SegmentType.PLAIN, e.html(), sb));
         }
     }
 
@@ -86,11 +90,11 @@ public class PostAdapter extends BaseMultiItemQuickAdapter<PostAdapter.Segment, 
     }
 
     private void convertPlainText(BaseViewHolder helper, Segment item) {
-        helper.setText(R.id.tv, Html.fromHtml(item.data));
+        helper.setText(R.id.tv, item.sb);
     }
 
     private void convertQuoteText(BaseViewHolder helper, Segment item) {
-        helper.setText(R.id.tv, Html.fromHtml(item.data));
+        helper.setText(R.id.tv, item.sb);
     }
 
     private void convertImage(BaseViewHolder helper, Segment item) {
@@ -115,9 +119,12 @@ public class PostAdapter extends BaseMultiItemQuickAdapter<PostAdapter.Segment, 
 
         public final String data;
 
-        public Segment(SegmentType t, String d) {
+        public final SpannableStringBuilder sb;
+
+        public Segment(SegmentType t, String d, SpannableStringBuilder sb) {
             type = t;
             data = d;
+            this.sb = sb;
         }
 
         @Override
@@ -137,5 +144,4 @@ public class PostAdapter extends BaseMultiItemQuickAdapter<PostAdapter.Segment, 
             this.id = id;
         }
     }
-
 }
