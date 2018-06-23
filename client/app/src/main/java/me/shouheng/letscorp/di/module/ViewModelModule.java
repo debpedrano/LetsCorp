@@ -1,6 +1,12 @@
 package me.shouheng.letscorp.di.module;
 
+import android.arch.lifecycle.ViewModel;
+
+import dagger.Binds;
 import dagger.Module;
+import dagger.multibindings.IntoMap;
+import me.shouheng.letscorp.di.annotation.ViewModelKey;
+import me.shouheng.letscorp.viewmodel.LetsCorpViewModel;
 
 /**
  * @author shouh
@@ -8,4 +14,9 @@ import dagger.Module;
  */
 @Module
 public abstract class ViewModelModule {
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(LetsCorpViewModel.class)
+    abstract ViewModel bindLetsCorpViewModell(LetsCorpViewModel letsCorpViewModel);
 }

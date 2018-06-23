@@ -3,6 +3,7 @@ package me.shouheng.letscorp.model;
 import android.support.annotation.StringRes;
 
 import me.shouheng.letscorp.R;
+import me.shouheng.letscorp.common.Const;
 
 /**
  * @author shouh
@@ -39,5 +40,9 @@ public enum CategoryInfo {
             }
         }
         throw new IllegalArgumentException("Invalid position " + position);
+    }
+
+    public String getPostListUrl(int page) {
+        return Const.LETSCORP_HOST + "/archives/category" + this.namePath + "/page/" + page;
     }
 }

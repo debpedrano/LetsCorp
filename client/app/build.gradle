@@ -94,6 +94,10 @@ dependencies {
     }
     // app debug tools
     implementation 'com.facebook.stetho:stetho:1.5.0'
+
+    implementation 'com.squareup.okhttp3:okhttp:3.3.1'
+    implementation 'org.jsoup:jsoup:1.9.2'
+
     // modules
     implementation project(':commons')
 }
