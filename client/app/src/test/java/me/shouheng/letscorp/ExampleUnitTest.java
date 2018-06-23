@@ -1,4 +1,4 @@
-package cn.glority.letscorp;
+package me.shouheng.letscorp;
 
 import org.junit.Test;
 

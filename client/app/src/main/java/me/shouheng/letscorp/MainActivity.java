@@ -1,4 +1,4 @@
-package cn.glority.letscorp;
+package me.shouheng.letscorp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
