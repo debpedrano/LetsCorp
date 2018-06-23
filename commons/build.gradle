@@ -42,10 +42,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     // support package
-    implementation "com.android.support:support-annotations:$supportLibVersion"
-    implementation "com.android.support:appcompat-v7:$supportLibVersion"
-    implementation "com.android.support:support-v4:$supportLibVersion"
-    implementation "com.android.support:recyclerview-v7:$supportLibVersion"
+    api "com.android.support:support-annotations:$supportLibVersion"
+    api "com.android.support:appcompat-v7:$supportLibVersion"
+    api "com.android.support:support-v4:$supportLibVersion"
+    api "com.android.support:recyclerview-v7:$supportLibVersion"
     // architecture components
     implementation "android.arch.lifecycle:runtime:$archVersion"
     implementation "android.arch.lifecycle:extensions:$archVersion"
@@ -56,14 +56,14 @@ dependencies {
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
     // multidex
-    implementation 'com.android.support:multidex:1.0.2'
+    api 'com.android.support:multidex:1.0.2'
     // time
-    implementation 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
-    implementation 'joda-time:joda-time:2.9.9'
+    api 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
+    api 'joda-time:joda-time:2.9.9'
     // apache-io
-    implementation 'commons-io:commons-io:2.5'
+    api 'commons-io:commons-io:2.5'
     // image compress
-    implementation 'top.zibin:Luban:1.1.3'
+    api 'top.zibin:Luban:1.1.3'
     // recycler
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.33'
 }
