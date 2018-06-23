@@ -1,6 +1,10 @@
 package me.shouheng.letscorp.di.module;
 
 import dagger.Module;
+import dagger.android.ContributesAndroidInjector;
+import me.shouheng.letscorp.view.main.fragment.AccountFragment;
+import me.shouheng.letscorp.view.main.fragment.FavoriteFragment;
+import me.shouheng.letscorp.view.main.fragment.PagerFragment;
 
 /**
  * @author shouh
@@ -8,4 +12,13 @@ import dagger.Module;
  */
 @Module
 public abstract class FragmentModule {
+
+    @ContributesAndroidInjector
+    abstract PagerFragment contributePagerFragment();
+
+    @ContributesAndroidInjector
+    abstract FavoriteFragment contributeFavoriteFragment();
+
+    @ContributesAndroidInjector
+    abstract AccountFragment contributeAccountFragment();
 }

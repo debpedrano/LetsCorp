@@ -1,6 +1,9 @@
 package me.shouheng.letscorp.di.module;
 
 import dagger.Module;
+import dagger.android.ContributesAndroidInjector;
+import me.shouheng.letscorp.di.annotation.ActivityScoped;
+import me.shouheng.letscorp.view.main.MainActivity;
 
 /**
  * @author shouh
@@ -9,4 +12,7 @@ import dagger.Module;
 @Module
 public abstract class ActivityModule {
 
+    @ActivityScoped
+    @ContributesAndroidInjector
+    abstract MainActivity mainActivity();
 }

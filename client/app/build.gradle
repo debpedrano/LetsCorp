@@ -2,11 +2,11 @@ apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
         applicationId "me.shouheng.letscorp"
-        minSdkVersion 17
-        targetSdkVersion 27
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
         // enable multi dex
@@ -17,6 +17,24 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    // signing
+    signingConfigs {
+        release {}
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true // minify
+            shrinkResources true // enable shrink resources
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        // config released apk name
+        applicationVariants.all { variant ->
+            variant.outputs.all { output ->
+                outputFileName = defaultConfig.applicationId + "-" + variant.baseName + "-" + defaultConfig.versionName + "-" + defaultConfig.versionCode + ".apk";
+            }
         }
     }
     // config release types
@@ -53,12 +71,17 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    // support
+    implementation "com.android.support:support-annotations:$supportLibVersion"
+    implementation "com.android.support:appcompat-v7:$supportLibVersion"
+    implementation "com.android.support:support-v4:$supportLibVersion"
+    implementation "com.android.support:recyclerview-v7:$supportLibVersion"
+    implementation "com.android.support:cardview-v7:$supportLibVersion"
+    implementation "com.android.support:design:$supportLibVersion"
     // dagger
     implementation "com.google.dagger:dagger:$dagger"
     implementation "com.google.dagger:dagger-android:$dagger"
