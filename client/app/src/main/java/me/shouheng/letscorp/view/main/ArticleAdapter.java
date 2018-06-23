@@ -11,7 +11,7 @@ import java.util.LinkedList;
 
 import me.shouheng.commons.util.TimeUtils;
 import me.shouheng.letscorp.R;
-import me.shouheng.letscorp.model.PostItem;
+import me.shouheng.letscorp.model.article.PostItem;
 
 /**
  * @author shouh

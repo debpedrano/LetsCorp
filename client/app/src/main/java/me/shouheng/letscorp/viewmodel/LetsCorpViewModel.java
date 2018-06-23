@@ -12,8 +12,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import me.shouheng.letscorp.model.CategoryInfo;
-import me.shouheng.letscorp.model.PostItem;
+import me.shouheng.letscorp.model.article.CategoryInfo;
+import me.shouheng.letscorp.model.article.Post;
+import me.shouheng.letscorp.model.article.PostItem;
 import me.shouheng.letscorp.model.data.Resource;
 import me.shouheng.letscorp.model.parser.Parser;
 import me.shouheng.letscorp.model.request.Callback;
@@ -40,6 +41,29 @@ public class LetsCorpViewModel extends AndroidViewModel{
             public void onSuccess(Document doc) {
                 List<PostItem> items = Parser.parsePostItems(doc, categoryInfo.id);
                 result.setValue(Resource.success(items));
+            }
+
+            @Override
+            public void onCancelled() {
+                result.setValue(Resource.canceled());
+            }
+
+            @Override
+            public void onError(Exception e) {
+                result.setValue(Resource.error(e.getMessage(), null));
+            }
+        });
+        return result;
+    }
+
+    public LiveData<Resource<Post>> fetchPostDetail(String url) {
+        MutableLiveData<Resource<Post>> result = new MutableLiveData<>();
+        letsCorpRequest.get(url, new Callback() {
+
+            @Override
+            public void onSuccess(Document doc) {
+                Post post = Parser.parsePost(doc, url);
+                result.setValue(Resource.success(post));
             }
 
             @Override

@@ -1,4 +1,4 @@
-package me.shouheng.letscorp.model;
+package me.shouheng.letscorp.model.article;
 
 import android.os.Parcel;
 import android.os.Parcelable;

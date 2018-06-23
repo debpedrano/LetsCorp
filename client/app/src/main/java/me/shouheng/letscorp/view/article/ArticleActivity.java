@@ -10,7 +10,7 @@ import me.shouheng.commons.helper.FragmentHelper;
 import me.shouheng.commons.util.PalmUtils;
 import me.shouheng.letscorp.R;
 import me.shouheng.letscorp.databinding.ActivityArticleBinding;
-import me.shouheng.letscorp.model.PostItem;
+import me.shouheng.letscorp.model.article.PostItem;
 import me.shouheng.letscorp.view.CommonDaggerActivity;
 
 /**
@@ -40,7 +40,7 @@ public class ArticleActivity extends CommonDaggerActivity<ActivityArticleBinding
 
         configToolbar();
 
-//        toFragment();
+        toFragment(ArticleFragment.newInstance(postItem));
     }
 
     private void handleIntent() {

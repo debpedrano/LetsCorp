@@ -2,6 +2,7 @@ package me.shouheng.letscorp.di.module;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
+import me.shouheng.letscorp.view.article.ArticleFragment;
 import me.shouheng.letscorp.view.main.fragment.AccountFragment;
 import me.shouheng.letscorp.view.main.fragment.FavoriteFragment;
 import me.shouheng.letscorp.view.main.fragment.PagerFragment;
@@ -25,4 +26,7 @@ public abstract class FragmentModule {
 
     @ContributesAndroidInjector
     abstract PostListFragment contributePostListFragment();
+
+    @ContributesAndroidInjector
+    abstract ArticleFragment contributeArticleFragment();
 }

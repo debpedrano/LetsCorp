@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import me.shouheng.commons.util.PalmUtils;
-import me.shouheng.letscorp.model.CategoryInfo;
+import me.shouheng.letscorp.model.article.CategoryInfo;
 import me.shouheng.letscorp.view.main.fragment.PostListFragment;
 
 /**

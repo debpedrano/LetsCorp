@@ -1,4 +1,4 @@
-package me.shouheng.letscorp.model;
+package me.shouheng.letscorp.model.article;
 
 import android.support.annotation.StringRes;
 
