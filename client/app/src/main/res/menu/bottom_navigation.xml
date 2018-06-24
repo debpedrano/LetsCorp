@@ -12,7 +12,7 @@
             android:id="@+id/nav_favorite"
             android:enabled="true"
             android:icon="@drawable/ic_favorite_black_24dp"
-            android:title="@string/nav_bottom_item_3" />
+            android:title="@string/nav_bottom_item_2" />
         <item
             android:id="@+id/nav_info"
             android:enabled="true"

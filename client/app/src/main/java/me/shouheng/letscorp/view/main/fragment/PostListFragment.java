@@ -81,8 +81,10 @@ public class PostListFragment extends CommonDaggerFragment<FragmentPostListBindi
         getBinding().rv.addItemDecoration(new DividerItemDecoration(Objects.requireNonNull(getContext()),
                 DividerItemDecoration.VERTICAL_LIST, false));
         getBinding().rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        getBinding().rv.setEmptyView(getBinding().ev);
 
         fetchPostItems(false);
+        getBinding().srl.setRefreshing(true);
     }
 
     private void fetchPostItems(boolean refresh) {

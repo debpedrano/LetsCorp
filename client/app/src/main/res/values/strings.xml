@@ -16,4 +16,7 @@
     <string name="lets_corp_category_history">历史</string>
 
     <string name="request_cancelled">取消了请求</string>
+
+    <string name="category_empty_title">该标签下还没有文章</string>
+    <string name="category_empty_sub_title">检查网络状态和VPN设置并尝试重新加载</string>
 </resources>
