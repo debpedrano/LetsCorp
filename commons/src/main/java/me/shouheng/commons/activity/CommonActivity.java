@@ -1,14 +1,11 @@
 package me.shouheng.commons.activity;
 
 import android.app.Activity;
-import android.arch.lifecycle.ViewModel;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 
 /**
@@ -42,10 +39,6 @@ public abstract class CommonActivity<T extends ViewDataBinding> extends BaseActi
 
     protected final T getBinding() {
         return binding;
-    }
-
-    protected <VM extends ViewModel> VM getViewModel(@NonNull Class<VM> modelClass) {
-        return ViewModelProviders.of(this).get(modelClass);
     }
 
     protected Fragment getCurrentFragment(@IdRes int resId) {
