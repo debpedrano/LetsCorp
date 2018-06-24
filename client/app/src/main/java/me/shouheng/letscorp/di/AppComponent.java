@@ -21,8 +21,7 @@ import me.shouheng.letscorp.di.module.ViewModelModule;
 @Component(modules = {ActivityModule.class,
         ViewModelModule.class,
         AppModule.class,
-        FragmentModule.class
-})
+        FragmentModule.class})
 public interface AppComponent extends AndroidInjector<PalmApp> {
 
     @Component.Builder

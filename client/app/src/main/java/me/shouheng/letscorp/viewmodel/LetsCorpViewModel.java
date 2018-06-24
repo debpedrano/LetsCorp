@@ -24,7 +24,7 @@ import me.shouheng.letscorp.model.request.LetsCorpRequest;
  * @author shouh
  * @version $Id: LetsCorpViewModel, v 0.1 2018/6/23 14:24 shouh Exp$
  */
-public class LetsCorpViewModel extends AndroidViewModel{
+public class LetsCorpViewModel extends AndroidViewModel {
 
     private LetsCorpRequest letsCorpRequest;
 

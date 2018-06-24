@@ -6,6 +6,7 @@ import dagger.Binds;
 import dagger.Module;
 import dagger.multibindings.IntoMap;
 import me.shouheng.letscorp.di.annotation.ViewModelKey;
+import me.shouheng.letscorp.viewmodel.FavoriteViewModel;
 import me.shouheng.letscorp.viewmodel.LetsCorpViewModel;
 
 /**
@@ -19,4 +20,9 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(LetsCorpViewModel.class)
     abstract ViewModel bindLetsCorpViewModell(LetsCorpViewModel letsCorpViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(FavoriteViewModel.class)
+    abstract ViewModel bindFavoriteViewModel(FavoriteViewModel favoriteViewModel);
 }
