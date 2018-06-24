@@ -76,8 +76,9 @@ public class PostAdapter extends BaseMultiItemQuickAdapter<PostAdapter.Segment, 
                 segments.add(new Segment(SegmentType.IMAGE, url, null));
             }
         } else {
+            // todo handle the paragraph tab
             SpannableStringBuilder sb = new SpannableStringBuilder();
-            sb.append("\t\t\t\t");
+            if (!e.html().startsWith("<p>　")) sb.append("\t\t\t\t");
             sb.append(Html.fromHtml(e.html().replace("<br>", "<br>&nbsp;&nbsp;&nbsp;&nbsp;")));
             segments.add(new Segment(quote ? SegmentType.QUOTE : SegmentType.PLAIN, e.html(), sb));
         }
