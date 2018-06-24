@@ -78,7 +78,7 @@ public class FileHelper {
         return isExternalStorageAvailable && isExternalStorageWritable;
     }
 
-    // region Name
+    // region get name from file strategies
     public static String getDefaultFileName(String extension) {
         Calendar now = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_SORTABLE, Locale.getDefault());
@@ -131,7 +131,7 @@ public class FileHelper {
     }
     // endregion
 
-    // region Path
+    // region get path from file strategies
     @SuppressLint("NewApi")
     public static String getPath(final Context context, final Uri uri) {
         if (uri == null) return null;
@@ -200,7 +200,7 @@ public class FileHelper {
     }
     // endregion
 
-    // region Size
+    // region get size from file strategies
     public static long getSize(File directory) {
         StatFs statFs = new StatFs(directory.getAbsolutePath());
         long blockSize = 0;
@@ -324,6 +324,50 @@ public class FileHelper {
             }
         }
         return mimeType;
+    }
+    // endregion
+
+    // region thumbnail
+    public static Uri getThumbnailUri(Context mContext, Uri uri) {
+        String mimeType = getMimeType(uri.toString());
+        if (!TextUtils.isEmpty(mimeType)) {
+            String type = mimeType.split("/")[0];
+            String subtype = mimeType.split("/")[1];
+            LogUtils.d(mimeType);
+            switch (type) {
+                case "image":
+                case "video":
+                    break;
+                case "audio":
+                    uri = Uri.parse("android.resource://" + mContext.getPackageName() + "/" + R.raw.play);
+                    break;
+                default:
+                    if ("x-vcard".equals(subtype)) {
+                        return Uri.parse("android.resource://" + mContext.getPackageName() + "/" + R.raw.vcard);
+                    } else {
+                        return getThumbnailUri(mContext, uri, subtype);
+                    }
+            }
+        } else {
+            String extension, path;
+            extension = TextUtils.isEmpty(path = getPath(mContext, uri)) ?  getFileExtension(uri.toString()) : getFileExtension(path);
+            return getThumbnailUri(mContext, uri, extension);
+        }
+        return uri;
+    }
+
+    private static Uri getThumbnailUri(Context mContext, Uri uri, String extension) {
+        switch (extension) {
+            case "mp3":case "wav":case "aac":case "wma":// audio
+                uri = Uri.parse("android.resource://" + mContext.getPackageName() + "/" + R.raw.play);
+                break;
+            case "avi":case "mov":case "wmv":case "3gp":case "rmvb":case "flv":case "mpeg":case "mp4":
+                return uri;
+            default:
+                uri = Uri.parse("android.resource://" + mContext.getPackageName() + "/" + R.raw.files);
+                break;
+        }
+        return uri;
     }
     // endregion
 

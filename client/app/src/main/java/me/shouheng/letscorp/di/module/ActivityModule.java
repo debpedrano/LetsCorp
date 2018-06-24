@@ -4,6 +4,7 @@ import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 import me.shouheng.letscorp.di.annotation.ActivityScoped;
 import me.shouheng.letscorp.view.article.ArticleActivity;
+import me.shouheng.letscorp.view.gallery.GalleryActivity;
 import me.shouheng.letscorp.view.main.MainActivity;
 
 /**
@@ -20,4 +21,8 @@ public abstract class ActivityModule {
     @ActivityScoped
     @ContributesAndroidInjector
     abstract ArticleActivity articleActivity();
+
+    @ActivityScoped
+    @ContributesAndroidInjector
+    abstract GalleryActivity galleryActivity();
 }

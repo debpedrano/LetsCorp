@@ -11,6 +11,7 @@ import javax.inject.Inject;
 
 import me.shouheng.commons.util.ToastUtils;
 import me.shouheng.letscorp.R;
+import me.shouheng.letscorp.common.AttachmentResolver;
 import me.shouheng.letscorp.databinding.FragmentArticleBinding;
 import me.shouheng.letscorp.model.article.PostItem;
 import me.shouheng.letscorp.view.CommonDaggerFragment;
@@ -61,6 +62,16 @@ public class ArticleFragment extends CommonDaggerFragment<FragmentArticleBinding
 
     private void configList() {
         adapter = new PostAdapter();
+        adapter.setOnItemClickListener((adapter1, view, position) -> {
+            PostAdapter.Segment segment = adapter.getItem(position);
+            assert segment != null;
+            if (segment.type == PostAdapter.SegmentType.IMAGE) {
+                AttachmentResolver.resolveClickEvent(getContext(),
+                        PostAdapter.getAttachmentFile(segment),
+                        PostAdapter.getAttachmentFilss(adapter.getImageSegments()),
+                        postItem.getTitle());
+            }
+        });
 
         getBinding().rv.setAdapter(adapter);
         getBinding().rv.setLayoutManager(new LinearLayoutManager(getContext()));

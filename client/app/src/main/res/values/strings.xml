@@ -19,4 +19,12 @@
 
     <string name="category_empty_title">该标签下还没有文章</string>
     <string name="category_empty_sub_title">检查网络状态和VPN设置并尝试重新加载</string>
+
+    <string name="menu_item_share">分享到&#8230;</string>
+    <string name="menu_item_open">用&#8230;打开</string>
+    <string name="menu_item_info">图片信息</string>
+
+    <string name="activity_not_found_to_resolve">没有找到可用的程序</string>
+    <string name="failed_when_play_audio">播放音频时出现错误</string>
+    <string name="failed_to_resolve_intent">没有找到可用的应用</string>
 </resources>

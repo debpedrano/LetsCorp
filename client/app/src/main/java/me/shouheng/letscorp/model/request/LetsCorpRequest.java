@@ -5,7 +5,7 @@ import android.util.Log;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import me.shouheng.letscorp.common.Const;
+import me.shouheng.letscorp.common.Constants;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -28,8 +28,8 @@ public class LetsCorpRequest {
     public Call get(String url, Callback callback) {
         Log.d("get", url);
         Request request = new Request.Builder()
-                .addHeader("User-Agent", Const.HTTP_USER_AGENT)
-                .addHeader("Accept", Const.HTTP_ACCEPT)
+                .addHeader("User-Agent", Constants.HTTP_USER_AGENT)
+                .addHeader("Accept", Constants.HTTP_ACCEPT)
                 .url(url)
                 .build();
         return execute(request, callback);
@@ -38,8 +38,8 @@ public class LetsCorpRequest {
     public Call post(String url, RequestBody body, Callback callback) {
         Log.d("post", url);
         Request request = new Request.Builder()
-                .addHeader("User-Agent", Const.HTTP_USER_AGENT)
-                .addHeader("Accept", Const.HTTP_ACCEPT)
+                .addHeader("User-Agent", Constants.HTTP_USER_AGENT)
+                .addHeader("Accept", Constants.HTTP_ACCEPT)
                 .url(url)
                 .method("POST", body)
                 .build();

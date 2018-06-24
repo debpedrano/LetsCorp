@@ -3,7 +3,7 @@ package me.shouheng.letscorp.model.article;
 import android.support.annotation.StringRes;
 
 import me.shouheng.letscorp.R;
-import me.shouheng.letscorp.common.Const;
+import me.shouheng.letscorp.common.Constants;
 
 /**
  * @author shouh
@@ -43,6 +43,6 @@ public enum CategoryInfo {
     }
 
     public String getPostListUrl(int page) {
-        return Const.LETSCORP_HOST + "/archives/category" + this.namePath + "/page/" + page;
+        return Constants.LETSCORP_HOST + "/archives/category" + this.namePath + "/page/" + page;
     }
 }

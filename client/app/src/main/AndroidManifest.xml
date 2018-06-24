@@ -22,6 +22,8 @@
         </activity>
 
         <activity android:name=".view.article.ArticleActivity"/>
+        <activity android:name=".view.gallery.GalleryActivity"
+            android:theme="@style/PictureViewTheme"/>
 
         <!-- region fabric -->
         <meta-data
