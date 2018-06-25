@@ -18,6 +18,7 @@ import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.support.annotation.DrawableRes;
+import android.support.annotation.NonNull;
 import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
@@ -122,12 +123,19 @@ public class FileHelper {
         return removeInvalidCharacters(name);
     }
 
-    private static String removeInvalidCharacters(final String fileName) {
+    public static String removeInvalidCharacters(final String fileName) {
         String fixedUpString = Uri.decode(fileName);
         for (int i = 0; i < ANSI_INVALID_CHARACTERS.length(); i++) {
             fixedUpString = fixedUpString.replace(ANSI_INVALID_CHARACTERS.charAt(i), '_');
         }
         return Uri.encode(fixedUpString);
+    }
+
+    public static String removeInvalidChars(@NonNull String fileName) {
+        for (int i = 0; i < ANSI_INVALID_CHARACTERS.length(); i++) {
+            fileName = fileName.replace(ANSI_INVALID_CHARACTERS.charAt(i), '_');
+        }
+        return fileName;
     }
     // endregion
 

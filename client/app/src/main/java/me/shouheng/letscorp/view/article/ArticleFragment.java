@@ -4,17 +4,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
-import android.text.SpannableStringBuilder;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.Objects;
 
 import javax.inject.Inject;
 
+import me.shouheng.commons.activity.BaseActivity;
+import me.shouheng.commons.helper.FileHelper;
+import me.shouheng.commons.util.PermissionUtils;
 import me.shouheng.commons.util.ToastUtils;
 import me.shouheng.letscorp.R;
 import me.shouheng.letscorp.common.AttachmentResolver;
@@ -145,7 +151,9 @@ public class ArticleFragment extends CommonDaggerFragment<FragmentArticleBinding
                 shareArticle();
                 break;
             case R.id.action_download:
-                downloadArticle();
+                PermissionUtils.checkStoragePermission(
+                        (BaseActivity) Objects.requireNonNull(getActivity()),
+                        this::downloadArticle);
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -199,7 +207,14 @@ public class ArticleFragment extends CommonDaggerFragment<FragmentArticleBinding
     }
 
     private void downloadArticle() {
-
+        try {
+            File exDir = Util.getTextExportDir();
+            File outFile = new File(exDir, FileHelper.removeInvalidChars(postItem.getTitle() + ".txt"));
+            FileUtils.writeStringToFile(outFile, getArticleContent(), "utf-8");
+            ToastUtils.makeToast(String.format(getString(R.string.text_file_saved_to), outFile.getPath()));
+        } catch (IOException e) {
+            ToastUtils.makeToast(R.string.failed_to_create_file);
+        }
     }
 
     private void notifyFavoriteChanged() {

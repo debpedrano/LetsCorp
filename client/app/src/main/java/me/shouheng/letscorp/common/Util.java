@@ -1,7 +1,9 @@
 package me.shouheng.letscorp.common;
 
+import android.os.Environment;
 import android.text.TextUtils;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
@@ -92,5 +94,18 @@ public class Util {
                 article.getTimestamp(),
                 null,
                 null);
+    }
+
+    public static File getTextExportDir() {
+        File dir = new File(getExternalStoragePublicDir(), Constants.TEXT_EXPORT_DIR_NAME);
+        if (!dir.exists()) dir.mkdirs();
+        return dir;
+    }
+
+    public static File getExternalStoragePublicDir() {
+        String path = Environment.getExternalStorageDirectory() + File.separator + Constants.EXTERNAL_STORAGE_FOLDER + File.separator;
+        File dir = new File(path);
+        if (!dir.exists()) dir.mkdirs();
+        return dir;
     }
 }

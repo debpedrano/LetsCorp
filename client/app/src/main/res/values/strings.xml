@@ -36,4 +36,6 @@
     <string name="favorite_empty_sub_title">你收藏过的文章会显示在这里</string>
 
     <string name="share_message_chooser">选择分享方式&#8230;</string>
+
+    <string name="text_file_saved_to">文件被保存到%s</string>
 </resources>

@@ -16,4 +16,8 @@ public class Constants implements BaseConstants {
     public final static String DATABASE_NAME = "lets_corp.db";
 
     public final static String ACTION_ARTICLE_FAVORITE = "action_article_favorite";
+
+    public final static String TEXT_EXPORT_DIR_NAME = "Articles";
+
+    public final static String EXTERNAL_STORAGE_FOLDER = "LetsCorp";
 }
