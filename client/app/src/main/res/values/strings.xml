@@ -34,4 +34,6 @@
 
     <string name="favorite_empty_title">你还没有收藏过文章</string>
     <string name="favorite_empty_sub_title">你收藏过的文章会显示在这里</string>
+
+    <string name="share_message_chooser">选择分享方式&#8230;</string>
 </resources>

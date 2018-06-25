@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.SpannableStringBuilder;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,12 +19,15 @@ import me.shouheng.commons.util.ToastUtils;
 import me.shouheng.letscorp.R;
 import me.shouheng.letscorp.common.AttachmentResolver;
 import me.shouheng.letscorp.common.Constants;
+import me.shouheng.letscorp.common.ModelHelper;
 import me.shouheng.letscorp.common.Util;
 import me.shouheng.letscorp.databinding.FragmentArticleBinding;
 import me.shouheng.letscorp.model.article.Post;
 import me.shouheng.letscorp.model.article.PostItem;
 import me.shouheng.letscorp.model.database.entity.Article;
 import me.shouheng.letscorp.view.CommonDaggerFragment;
+import me.shouheng.letscorp.view.article.PostAdapter.Segment;
+import me.shouheng.letscorp.view.article.PostAdapter.SegmentType;
 import me.shouheng.letscorp.viewmodel.FavoriteViewModel;
 import me.shouheng.letscorp.viewmodel.LetsCorpViewModel;
 
@@ -176,7 +180,22 @@ public class ArticleFragment extends CommonDaggerFragment<FragmentArticleBinding
     }
 
     private void shareArticle() {
+        ModelHelper.share(getContext(), post.getTitle(), getArticleContent(), new LinkedList<>());
+    }
 
+    private String getArticleContent() {
+        StringBuilder sb = new StringBuilder();
+        int len = adapter.getData().size();
+        for (int i=0; i<len; i++) {
+            Segment segment = adapter.getData().get(i);
+            if (segment.type == SegmentType.PLAIN || segment.type == SegmentType.QUOTE) {
+                sb.append(segment.sb.toString());
+                if (i != len - 1) {
+                    sb.append("\n");
+                }
+            }
+        }
+        return sb.toString();
     }
 
     private void downloadArticle() {
