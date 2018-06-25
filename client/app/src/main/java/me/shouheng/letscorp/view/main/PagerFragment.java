@@ -1,4 +1,4 @@
-package me.shouheng.letscorp.view.main.fragment;
+package me.shouheng.letscorp.view.main;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,7 +11,6 @@ import me.shouheng.commons.util.PalmUtils;
 import me.shouheng.letscorp.R;
 import me.shouheng.letscorp.databinding.FragmentPagerBinding;
 import me.shouheng.letscorp.view.CommonDaggerFragment;
-import me.shouheng.letscorp.view.main.PageAdapter;
 
 /**
  * @author shouh

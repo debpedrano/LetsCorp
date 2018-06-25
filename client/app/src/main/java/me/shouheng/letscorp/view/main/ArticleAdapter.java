@@ -19,7 +19,7 @@ import me.shouheng.letscorp.model.article.PostItem;
  */
 public class ArticleAdapter extends BaseQuickAdapter<PostItem, BaseViewHolder> {
 
-    public ArticleAdapter() {
+    ArticleAdapter() {
         super(R.layout.item_article, new LinkedList<>());
     }
 

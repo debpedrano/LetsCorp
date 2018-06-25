@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import me.shouheng.commons.util.PalmUtils;
 import me.shouheng.letscorp.model.article.CategoryInfo;
-import me.shouheng.letscorp.view.main.fragment.PostListFragment;
 
 /**
  * @author shouh
@@ -14,7 +13,7 @@ import me.shouheng.letscorp.view.main.fragment.PostListFragment;
  */
 public class PageAdapter extends FragmentPagerAdapter {
 
-    public PageAdapter(FragmentManager fm) {
+    PageAdapter(FragmentManager fm) {
         super(fm);
     }
 

@@ -1,15 +1,18 @@
 package me.shouheng.letscorp.view.main;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 
-import me.shouheng.commons.util.PalmUtils;
 import me.shouheng.letscorp.R;
+import me.shouheng.letscorp.common.Constants;
 import me.shouheng.letscorp.databinding.ActivityMainBinding;
 import me.shouheng.letscorp.view.CommonDaggerActivity;
-import me.shouheng.letscorp.view.main.fragment.AccountFragment;
-import me.shouheng.letscorp.view.main.fragment.FavoriteFragment;
-import me.shouheng.letscorp.view.main.fragment.PagerFragment;
+import me.shouheng.letscorp.view.account.AccountFragment;
+import me.shouheng.letscorp.view.favorite.FavoriteFragment;
 
 public class MainActivity extends CommonDaggerActivity<ActivityMainBinding> {
 
@@ -20,6 +23,8 @@ public class MainActivity extends CommonDaggerActivity<ActivityMainBinding> {
     private PagerFragment pagerFragment;
     private FavoriteFragment favoriteFragment;
     private AccountFragment accountFragment;
+
+    private FavoriteChangedReceiver favoriteChangedReceiver;
 
     @Override
     protected int getLayoutResId() {
@@ -40,6 +45,8 @@ public class MainActivity extends CommonDaggerActivity<ActivityMainBinding> {
         });
 
         showFragment(FRAGMENT_KEY_PAGER);
+
+        regBroadcastReceivers();
     }
 
     private void initFragments(Bundle savedInstanceState) {
@@ -90,5 +97,30 @@ public class MainActivity extends CommonDaggerActivity<ActivityMainBinding> {
                         ).commit();
                 break;
         }
+    }
+
+    private void regBroadcastReceivers() {
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Constants.ACTION_ARTICLE_FAVORITE);
+        favoriteChangedReceiver = new FavoriteChangedReceiver();
+        registerReceiver(favoriteChangedReceiver, filter);
+    }
+
+    private class FavoriteChangedReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            notifyFavoriteChanged();
+        }
+    }
+
+    private void notifyFavoriteChanged() {
+        if (favoriteFragment != null) favoriteFragment.fetchData();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(favoriteChangedReceiver);
     }
 }

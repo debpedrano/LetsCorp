@@ -1,4 +1,4 @@
-package me.shouheng.letscorp.view.main.fragment;
+package me.shouheng.letscorp.view.main;
 
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -16,7 +16,6 @@ import me.shouheng.letscorp.model.article.CategoryInfo;
 import me.shouheng.letscorp.model.article.PostItem;
 import me.shouheng.letscorp.view.CommonDaggerFragment;
 import me.shouheng.letscorp.view.article.ArticleActivity;
-import me.shouheng.letscorp.view.main.ArticleAdapter;
 import me.shouheng.letscorp.viewmodel.LetsCorpViewModel;
 
 /**
@@ -103,7 +102,6 @@ public class PostListFragment extends CommonDaggerFragment<FragmentPostListBindi
                     } else {
                         adapter.addData(listResource.data);
                     }
-                    adapter.notifyDataSetChanged();
                     break;
                 case FAILED:
                     ToastUtils.makeToast(listResource.message);
