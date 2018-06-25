@@ -20,6 +20,7 @@
     <string name="category_empty_title">该标签下还没有文章</string>
     <string name="category_empty_sub_title">检查网络状态和VPN设置并尝试重新加载</string>
     <string name="menu_favorite">收藏</string>
+    <string name="favorite_successfully">收藏成功</string>
     <string name="menu_share">分享</string>
     <string name="menu_download">下载</string>
 

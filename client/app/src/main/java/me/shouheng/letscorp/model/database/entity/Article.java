@@ -12,7 +12,7 @@ import java.util.Date;
 @Entity
 public class Article {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int id;
 
     private int articleId;
@@ -23,23 +23,32 @@ public class Article {
 
     private String img;
 
+    private String preview;
+
     private String content;
+
+    private String author;
+
+    private String tags;
+
+    private String categories;
 
     private long timestamp;
 
-    private int category;
-
     private Date addedTime;
 
-    public Article(int id, int articleId, String title, String href, String img, String content, long timestamp, int category, Date addedTime) {
-        this.id = id;
+    public Article(int articleId, String title, String href, String img, String preview, String content,
+                   String author, String tags, String categories, long timestamp, Date addedTime) {
         this.articleId = articleId;
         this.title = title;
         this.href = href;
         this.img = img;
+        this.preview = preview;
         this.content = content;
+        this.author = author;
+        this.tags = tags;
+        this.categories = categories;
         this.timestamp = timestamp;
-        this.category = category;
         this.addedTime = addedTime;
     }
 
@@ -83,6 +92,14 @@ public class Article {
         this.img = img;
     }
 
+    public String getPreview() {
+        return preview;
+    }
+
+    public void setPreview(String preview) {
+        this.preview = preview;
+    }
+
     public String getContent() {
         return content;
     }
@@ -91,20 +108,36 @@ public class Article {
         this.content = content;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+
+    public String getCategories() {
+        return categories;
+    }
+
+    public void setCategories(String categories) {
+        this.categories = categories;
+    }
+
     public long getTimestamp() {
         return timestamp;
     }
 
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
-    }
-
-    public int getCategory() {
-        return category;
-    }
-
-    public void setCategory(int category) {
-        this.category = category;
     }
 
     public Date getAddedTime() {
@@ -124,8 +157,11 @@ public class Article {
                 ", href='" + href + '\'' +
                 ", img='" + img + '\'' +
                 ", content='" + content + '\'' +
+                ", preview='" + preview + '\'' +
+                ", author='" + author + '\'' +
+                ", tags='" + tags + '\'' +
+                ", categories='" + categories + '\'' +
                 ", timestamp=" + timestamp +
-                ", category=" + category +
                 ", addedTime=" + addedTime +
                 '}';
     }

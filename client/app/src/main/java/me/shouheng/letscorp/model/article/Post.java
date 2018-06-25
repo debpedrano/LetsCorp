@@ -3,6 +3,7 @@ package me.shouheng.letscorp.model.article;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.TimeZone;
  * @author shouh
  * @version $Id: Post, v 0.1 2018/6/23 22:45 shouh Exp$
  */
-public class Post {
+public class Post implements Serializable {
     private int id;
     private String href;
     private String title;

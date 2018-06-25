@@ -1,10 +1,18 @@
 package me.shouheng.letscorp.common;
 
+import android.text.TextUtils;
+
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Locale;
 
 import me.shouheng.commons.util.LogUtils;
+import me.shouheng.letscorp.model.article.Post;
+import me.shouheng.letscorp.model.article.PostItem;
+import me.shouheng.letscorp.model.database.entity.Article;
 
 /**
  * @author shouh
@@ -13,6 +21,8 @@ import me.shouheng.commons.util.LogUtils;
 public class Util {
 
     private static final String DATETIME_FORMAT = "yyyy-MM-dd'T'HH:mm:sszzz";
+
+    public static final String SPLIT = "@-@";
 
     public static int parseInt(String str) {
         StringBuilder v = new StringBuilder();
@@ -39,5 +49,48 @@ public class Util {
             LogUtils.d("source:"+source + ", " + e);
         }
         return 0;
+    }
+
+    public static String connect(List<String> categories) {
+        if (categories == null) return "";
+        int len = categories.size();
+        StringBuilder sb = new StringBuilder();
+        for (int i=0; i<len; i++) {
+            sb.append(categories.get(i));
+            if (i != len - 1) {
+                sb.append(SPLIT);
+            }
+        }
+        return sb.toString();
+    }
+
+    public static List<String> split(String string) {
+        List<String> list = new LinkedList<>();
+        if (TextUtils.isEmpty(string)) return list;
+        String[] arr = string.split(SPLIT);
+        list.addAll(Arrays.asList(arr));
+        return list;
+    }
+
+    public static PostItem getPostItem(Article article) {
+        return new PostItem(article.getArticleId(),
+                article.getTitle(),
+                article.getHref(),
+                article.getImg(),
+                article.getPreview(),
+                0,
+                article.getTimestamp());
+    }
+
+    public static Post getPost(Article article) {
+        return new Post(article.getArticleId(),
+                article.getHref(),
+                article.getTitle(),
+                article.getContent(),
+                null,
+                null,
+                article.getTimestamp(),
+                null,
+                null);
     }
 }

@@ -3,10 +3,10 @@ package me.shouheng.letscorp.di.module;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 import me.shouheng.letscorp.view.article.ArticleFragment;
-import me.shouheng.letscorp.view.main.fragment.AccountFragment;
-import me.shouheng.letscorp.view.main.fragment.FavoriteFragment;
-import me.shouheng.letscorp.view.main.fragment.PagerFragment;
-import me.shouheng.letscorp.view.main.fragment.PostListFragment;
+import me.shouheng.letscorp.view.account.AccountFragment;
+import me.shouheng.letscorp.view.favorite.FavoriteFragment;
+import me.shouheng.letscorp.view.main.PagerFragment;
+import me.shouheng.letscorp.view.main.PostListFragment;
 
 /**
  * @author shouh

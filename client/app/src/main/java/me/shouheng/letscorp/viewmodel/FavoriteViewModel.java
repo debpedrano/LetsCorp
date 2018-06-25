@@ -29,9 +29,18 @@ public class FavoriteViewModel extends AndroidViewModel {
         this.articleDao = articleDao;
     }
 
-    public LiveData<Resource<List<Article>>> aasdsa() {
+    public LiveData<Resource<List<Article>>> getAll() {
         MutableLiveData<Resource<List<Article>>> result = new MutableLiveData<>();
         new NormalAsyncTask<>(result, () -> articleDao.getAll()).execute();
+        return result;
+    }
+
+    public LiveData<Resource<Article>> favorite(Article article) {
+        MutableLiveData<Resource<Article>> result = new MutableLiveData<>();
+        new NormalAsyncTask<>(result, () -> {
+            articleDao.save(article);
+            return null;
+        }).execute();
         return result;
     }
 }
