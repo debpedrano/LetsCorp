@@ -37,8 +37,8 @@ import me.shouheng.letscorp.common.Constants;
  */
 public class PostAdapter extends BaseMultiItemQuickAdapter<PostAdapter.Segment, BaseViewHolder> {
 
-    PostAdapter() {
-        super(new LinkedList<>());
+    PostAdapter(List<Segment> segments) {
+        super(segments);
         addItemType(SegmentType.PLAIN.id, R.layout.item_palin_text);
         addItemType(SegmentType.QUOTE.id, R.layout.item_quote);
         addItemType(SegmentType.IMAGE.id, R.layout.item_image);

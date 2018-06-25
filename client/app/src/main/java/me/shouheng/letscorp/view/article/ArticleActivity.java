@@ -10,6 +10,7 @@ import me.shouheng.commons.helper.FragmentHelper;
 import me.shouheng.commons.util.PalmUtils;
 import me.shouheng.letscorp.R;
 import me.shouheng.letscorp.databinding.ActivityArticleBinding;
+import me.shouheng.letscorp.model.article.Post;
 import me.shouheng.letscorp.model.article.PostItem;
 import me.shouheng.letscorp.view.CommonDaggerActivity;
 
@@ -21,10 +22,21 @@ public class ArticleActivity extends CommonDaggerActivity<ActivityArticleBinding
 
     private final static String EXTRA_POST_ITEM = "__key_extra_post_item";
 
+    private final static String EXTRA_POST = "__key_extra_post";
+
     private PostItem postItem;
+
+    private Post post;
 
     public static void start(Fragment fragment, PostItem postItem) {
         Intent intent = new Intent(fragment.getContext(), ArticleActivity.class);
+        intent.putExtra(EXTRA_POST_ITEM, postItem);
+        fragment.startActivity(intent);
+    }
+
+    public static void start(Fragment fragment, PostItem postItem, Post post) {
+        Intent intent = new Intent(fragment.getContext(), ArticleActivity.class);
+        intent.putExtra(EXTRA_POST, post);
         intent.putExtra(EXTRA_POST_ITEM, postItem);
         fragment.startActivity(intent);
     }
@@ -40,12 +52,13 @@ public class ArticleActivity extends CommonDaggerActivity<ActivityArticleBinding
 
         configToolbar();
 
-        toFragment(ArticleFragment.newInstance(postItem));
+        toFragment(ArticleFragment.newInstance(postItem, post));
     }
 
     private void handleIntent() {
         Intent intent = getIntent();
         postItem = intent.getParcelableExtra(EXTRA_POST_ITEM);
+        post = (Post) intent.getSerializableExtra(EXTRA_POST);
     }
 
     private void configToolbar() {
