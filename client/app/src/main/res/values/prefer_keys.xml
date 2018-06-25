@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--region theme-->
+    <string name="key_theme" translatable="false">__key_theme</string>
+    <string name="key_night_theme" translatable="false">__key_night_theme</string>
+    <!--endregion-->
+
+    <!--region about-->
+    <string name="key_about" translatable="false">__key_about_app</string>
+    <string name="key_about_app" translatable="false">__key_about_app</string>
+    <string name="key_about_developer" translatable="false">__key_about_developer</string>
+    <string name="key_associated_apps" translatable="false">__key_associated_apps</string>
+    <string name="key_update_logs" translatable="false">__key_update_logs</string>
+    <string name="key_open_source_license" translatable="false">__key_open_source_license</string>
+    <!--endregion-->
+
+</resources>

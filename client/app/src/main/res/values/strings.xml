@@ -38,4 +38,15 @@
     <string name="share_message_chooser">选择分享方式&#8230;</string>
 
     <string name="text_file_saved_to">文件被保存到%s</string>
+
+    <string name="pref_theme">主题</string>
+    <string name="pref_night_theme">夜间主题</string>
+    <string name="pref_about">关于</string>
+    <string name="pref_about_app">关于应用</string>
+    <string name="pref_about_developer">关于开发者</string>
+    <string name="pref_about_developer_sub">WngShhng (shouheng2015@gmail.com)</string>
+    <string name="pref_associated_apps">开发者的其他应用</string>
+    <string name="pref_associated_apps_sub">点击看一下有没有自己需要的应用</string>
+    <string name="pref_update_logs">更新日志</string>
+    <string name="pref_open_source_license">开源许可</string>
 </resources>

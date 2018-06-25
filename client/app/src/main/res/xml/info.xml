@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/pref_theme">
+
+        <CheckBoxPreference android:key="@string/key_night_theme"
+            android:title="@string/pref_night_theme"
+            android:defaultValue="false"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_about">
+
+        <Preference android:key="@string/key_about_app"
+            android:title="@string/pref_about_app"
+            android:summary="@string/app_name"/>
+
+        <Preference android:key="@string/key_about_developer"
+            android:title="@string/pref_about_developer"
+            android:summary="@string/pref_about_developer_sub"/>
+
+        <Preference android:key="@string/key_associated_apps"
+            android:title="@string/pref_associated_apps"
+            android:summary="@string/pref_associated_apps_sub"/>
+
+        <Preference android:key="@string/key_update_logs"
+            android:title="@string/pref_update_logs" />
+
+        <Preference android:key="@string/key_open_source_license"
+            android:title="@string/pref_open_source_license"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -2,6 +2,7 @@ package me.shouheng.letscorp.view.account;
 
 import android.os.Bundle;
 
+import me.shouheng.commons.util.PalmUtils;
 import me.shouheng.letscorp.R;
 import me.shouheng.letscorp.databinding.FragmentAccountBinding;
 import me.shouheng.letscorp.view.CommonDaggerFragment;
@@ -26,6 +27,11 @@ public class AccountFragment extends CommonDaggerFragment<FragmentAccountBinding
 
     @Override
     protected void doCreateView(Bundle savedInstanceState) {
+        getBinding().toolbar.setTitle(R.string.nav_bottom_item_3);
+        getBinding().toolbar.setTitleTextColor(PalmUtils.getColorCompact(R.color.colorAccent));
 
+        getChildFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                InfoFragment.newInstance(),
+                "__key_info_fragment").commit();
     }
 }
