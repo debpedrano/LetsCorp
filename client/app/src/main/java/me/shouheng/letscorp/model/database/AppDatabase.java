@@ -11,8 +11,7 @@ import me.shouheng.letscorp.model.database.entity.Article;
  * @author shouh
  * @version $Id: AppDatabase, v 0.1 2018/6/24 13:12 shouh Exp$
  */
-//  todo update version to 1
-@Database(entities = {Article.class}, version = 2)
+@Database(entities = {Article.class}, version = 1)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
 
