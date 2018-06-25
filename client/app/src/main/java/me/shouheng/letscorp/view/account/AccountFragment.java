@@ -1,4 +1,4 @@
-package me.shouheng.letscorp.view.main.fragment;
+package me.shouheng.letscorp.view.account;
 
 import android.os.Bundle;
 
