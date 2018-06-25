@@ -43,6 +43,6 @@ public enum CategoryInfo {
     }
 
     public String getPostListUrl(int page) {
-        return Constants.LETSCORP_HOST + "/archives/category" + this.namePath + "/page/" + page;
+        return Constants.LETS_CORP_HOST + "/archives/category" + this.namePath + "/page/" + page;
     }
 }
