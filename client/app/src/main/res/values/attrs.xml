@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SupportTextView">
+        <attr name="dark_theme_text_color" format="color|reference" />
+        <attr name="light_theme_text_color" format="color|reference" />
+    </declare-styleable>
+</resources>

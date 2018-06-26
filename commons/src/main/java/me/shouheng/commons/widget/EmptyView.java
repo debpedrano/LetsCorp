@@ -24,6 +24,9 @@ public class EmptyView extends LinearLayout {
 
     private WidgetEmptyViewBinding binding;
 
+    @DrawableRes
+    private int mIcon;
+
     public EmptyView(Context context) {
         this(context, null);
     }
@@ -44,7 +47,7 @@ public class EmptyView extends LinearLayout {
         TypedArray attr = context.obtainStyledAttributes(attributeSet, R.styleable.EmptyView, 0, 0);
         int bottomTitleSize = attr.getDimensionPixelSize(R.styleable.EmptyView_title_size, 16);
         int bottomSubTitleSize = attr.getDimensionPixelSize(R.styleable.EmptyView_sub_title_size, 14);
-        int mIcon = attr.getResourceId(R.styleable.EmptyView_empty_image, -1);
+        mIcon = attr.getResourceId(R.styleable.EmptyView_empty_image, -1);
         tintDrawable = attr.getBoolean(R.styleable.EmptyView_tint_drawable, false);
         String bottomTitle = attr.getString(R.styleable.EmptyView_title);
         String bottomSubTitle = attr.getString(R.styleable.EmptyView_sub_title);
@@ -88,5 +91,14 @@ public class EmptyView extends LinearLayout {
     public void setIcon(Drawable drawable) {
         binding.ivImage.setImageDrawable(tintDrawable ?
                 ColorUtils.tintDrawable(drawable, PalmUtils.getColorCompact(R.color.light_theme_empty_icon_tint_color)) : drawable);
+    }
+
+    public void useDarkTheme() {
+        binding.tvBottomTitle.setTextColor(getResources().getColor(R.color.dark_theme_empty_text_color));
+        binding.tvBottomSubTitle.setTextColor(getResources().getColor(R.color.dark_theme_empty_sub_text_color));
+        if (mIcon != -1) {
+            binding.ivImage.setImageDrawable(ColorUtils.tintDrawable(PalmUtils.getDrawableCompact(mIcon),
+                    PalmUtils.getColorCompact(R.color.dark_theme_empty_icon_tint_color)));
+        }
     }
 }
