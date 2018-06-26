@@ -20,6 +20,10 @@ public class MainActivity extends CommonDaggerActivity<ActivityMainBinding> {
     private final String FRAGMENT_KEY_FAVORITE = "__key_fragment_favorite";
     private final String FRAGMENT_KEY_ACCOUNT = "__key_fragment_account";
 
+    private final String CURRENT_SELECTED_ITEM_KEY = "__key_current_selected_item_key";
+
+    private String currentSelectedItemKey = FRAGMENT_KEY_PAGER;
+
     private PagerFragment pagerFragment;
     private FavoriteFragment favoriteFragment;
     private AccountFragment accountFragment;
@@ -44,7 +48,7 @@ public class MainActivity extends CommonDaggerActivity<ActivityMainBinding> {
             return true;
         });
 
-        showFragment(FRAGMENT_KEY_PAGER);
+        showFragment(currentSelectedItemKey);
 
         regBroadcastReceivers();
     }
@@ -59,6 +63,7 @@ public class MainActivity extends CommonDaggerActivity<ActivityMainBinding> {
             pagerFragment = (PagerFragment) fm.getFragment(savedInstanceState, FRAGMENT_KEY_PAGER);
             favoriteFragment = (FavoriteFragment) fm.getFragment(savedInstanceState, FRAGMENT_KEY_FAVORITE);
             accountFragment = (AccountFragment) fm.getFragment(savedInstanceState, FRAGMENT_KEY_ACCOUNT);
+            currentSelectedItemKey = savedInstanceState.getString(CURRENT_SELECTED_ITEM_KEY);
         }
 
         if (!pagerFragment.isAdded()) {
@@ -73,6 +78,8 @@ public class MainActivity extends CommonDaggerActivity<ActivityMainBinding> {
     }
 
     private void showFragment(String key) {
+        currentSelectedItemKey = key;
+
         FragmentManager fm = getSupportFragmentManager();
         switch (key) {
             case FRAGMENT_KEY_PAGER:
@@ -93,8 +100,8 @@ public class MainActivity extends CommonDaggerActivity<ActivityMainBinding> {
                 fm.beginTransaction()
                         .show(accountFragment)
                         .hide(favoriteFragment)
-                        .hide(pagerFragment
-                        ).commit();
+                        .hide(pagerFragment)
+                        .commit();
                 break;
         }
     }
@@ -116,6 +123,16 @@ public class MainActivity extends CommonDaggerActivity<ActivityMainBinding> {
 
     private void notifyFavoriteChanged() {
         if (favoriteFragment != null) favoriteFragment.fetchData();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        FragmentManager fm = getSupportFragmentManager();
+        fm.putFragment(outState, FRAGMENT_KEY_PAGER, pagerFragment);
+        fm.putFragment(outState, FRAGMENT_KEY_ACCOUNT, accountFragment);
+        fm.putFragment(outState, FRAGMENT_KEY_FAVORITE, favoriteFragment);
+        outState.putString(CURRENT_SELECTED_ITEM_KEY, currentSelectedItemKey);
     }
 
     @Override

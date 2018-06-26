@@ -16,10 +16,12 @@ import me.shouheng.letscorp.common.PrefUtils;
  */
 public abstract class CommonDaggerActivity<T extends ViewDataBinding> extends CommonActivity<T> {
 
+    private boolean isNightTheme;
+
     @Override
     protected void beforeCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
-        boolean isNightTheme = PrefUtils.getInstance().isNightTheme();
+        isNightTheme = PrefUtils.getInstance().isNightTheme();
         setTheme(isNightTheme ? R.style.AppThemeDark : R.style.AppTheme);
 
         if (PrefUtils.getInstance().isNightTheme()) {
@@ -30,5 +32,16 @@ public abstract class CommonDaggerActivity<T extends ViewDataBinding> extends Co
 
     protected boolean isDarkTheme() {
         return PrefUtils.getInstance().isNightTheme();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (PrefUtils.getInstance().isNightTheme() != isNightTheme) {
+            boolean isNight = PrefUtils.getInstance().isNightTheme();
+            ThemeUtils.setUseThemeStatusBarColor(isNight);
+            ThemeUtils.setUseStatusBarColor(isNight);
+            recreate();
+        }
     }
 }

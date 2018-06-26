@@ -1,5 +1,6 @@
 package me.shouheng.letscorp.view.account;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
 import android.support.v7.preference.Preference;
@@ -28,11 +29,12 @@ public class InfoFragment extends PreferenceFragmentCompat {
 
         findPreference(R.string.key_update_logs).setSummary(BuildConfig.FLAVOR  + " - " + BuildConfig.VERSION_NAME);
 
-        findPreference(R.string.key_night_theme).setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                return true;
+        findPreference(R.string.key_night_theme).setOnPreferenceChangeListener((preference, newValue) -> {
+            Activity activity = getActivity();
+            if (activity != null) {
+                getActivity().recreate();
             }
+            return true;
         });
 
         findPreference(R.string.key_about_app).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
