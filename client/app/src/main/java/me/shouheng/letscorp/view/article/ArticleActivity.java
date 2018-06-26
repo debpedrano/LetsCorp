@@ -65,6 +65,7 @@ public class ArticleActivity extends CommonDaggerActivity<ActivityArticleBinding
         getBinding().toolbar.setTitle(postItem.getTitle());
         getBinding().toolbar.setTitleTextColor(PalmUtils.getColorCompact(R.color.colorAccent));
         setSupportActionBar(getBinding().toolbar);
+        if (isDarkTheme()) getBinding().toolbar.setPopupTheme(R.style.AppTheme_PopupOverlayDark);
     }
 
     private void toFragment(Fragment fragment) {

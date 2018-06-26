@@ -27,4 +27,8 @@ public abstract class CommonDaggerActivity<T extends ViewDataBinding> extends Co
             getWindow().setBackgroundDrawableResource(R.color.dark_theme_background);
         }
     }
+
+    protected boolean isDarkTheme() {
+        return PrefUtils.getInstance().isNightTheme();
+    }
 }

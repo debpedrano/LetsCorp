@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import me.shouheng.commons.helper.FileHelper;
 import me.shouheng.commons.model.AttachmentFile;
 import me.shouheng.commons.util.SystemUiVisibilityUtil;
+import me.shouheng.commons.util.ThemeUtils;
 import me.shouheng.commons.util.ToastUtils;
 import me.shouheng.commons.util.ViewUtils;
 import me.shouheng.commons.widget.DepthPageTransformer;
@@ -57,6 +58,8 @@ public class GalleryActivity extends CommonDaggerActivity<ActivityGalleryBinding
         configToolbar();
 
         configViews();
+
+        ThemeUtils.setStatusBarColor(this, Color.BLACK);
     }
 
     private void handleIntent(Bundle savedInstanceState) {
