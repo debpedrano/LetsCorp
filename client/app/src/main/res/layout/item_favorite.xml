@@ -14,11 +14,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <android.support.v7.widget.AppCompatTextView
+        <me.shouheng.letscorp.common.SupportTextView
             android:id="@+id/tv_title"
             tools:text="This is the fucking long title test, wow you may wonder why???? BALABALABALA"
             android:textSize="16sp"
-            android:textColor="@android:color/black"
             android:maxLines="2"
             android:ellipsize="end"
             android:layout_width="match_parent"

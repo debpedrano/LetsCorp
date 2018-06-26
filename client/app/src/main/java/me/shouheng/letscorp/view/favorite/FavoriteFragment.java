@@ -13,6 +13,7 @@ import me.shouheng.commons.util.PalmUtils;
 import me.shouheng.commons.util.ToastUtils;
 import me.shouheng.commons.widget.DividerItemDecoration;
 import me.shouheng.letscorp.R;
+import me.shouheng.letscorp.common.PrefUtils;
 import me.shouheng.letscorp.common.Util;
 import me.shouheng.letscorp.databinding.FragmentFavoriteBinding;
 import me.shouheng.letscorp.model.database.entity.Article;
@@ -68,9 +69,12 @@ public class FavoriteFragment extends CommonDaggerFragment<FragmentFavoriteBindi
 
         getBinding().rv.setAdapter(adapter);
         getBinding().rv.addItemDecoration(new DividerItemDecoration(Objects.requireNonNull(getContext()),
-                DividerItemDecoration.VERTICAL_LIST, false));
+                DividerItemDecoration.VERTICAL_LIST, PrefUtils.getInstance().isNightTheme()));
         getBinding().rv.setLayoutManager(new LinearLayoutManager(getContext()));
         getBinding().rv.setEmptyView(getBinding().ev);
+        if (PrefUtils.getInstance().isNightTheme()) {
+            getBinding().ev.useDarkTheme();
+        }
 
         fetchData();
         getBinding().srl.setRefreshing(true);

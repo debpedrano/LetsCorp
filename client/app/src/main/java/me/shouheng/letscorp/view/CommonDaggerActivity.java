@@ -1,10 +1,12 @@
 package me.shouheng.letscorp.view;
 
 import android.databinding.ViewDataBinding;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import dagger.android.AndroidInjection;
 import me.shouheng.commons.activity.CommonActivity;
+import me.shouheng.commons.util.ThemeUtils;
 import me.shouheng.letscorp.R;
 import me.shouheng.letscorp.common.PrefUtils;
 
@@ -19,5 +21,10 @@ public abstract class CommonDaggerActivity<T extends ViewDataBinding> extends Co
         AndroidInjection.inject(this);
         boolean isNightTheme = PrefUtils.getInstance().isNightTheme();
         setTheme(isNightTheme ? R.style.AppThemeDark : R.style.AppTheme);
+
+        if (PrefUtils.getInstance().isNightTheme()) {
+            ThemeUtils.setStatusBarColor(this, Color.parseColor("#2a3a4b"));
+            getWindow().setBackgroundDrawableResource(R.color.dark_theme_background);
+        }
     }
 }

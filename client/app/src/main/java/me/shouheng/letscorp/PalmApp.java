@@ -43,6 +43,7 @@ public class PalmApp extends BaseApplication implements HasActivityInjector, Has
 
         boolean isNight = PrefUtils.getInstance().isNightTheme();
         ThemeUtils.setUseThemeStatusBarColor(isNight);
+        ThemeUtils.setUseStatusBarColor(isNight);
     }
 
     @Override

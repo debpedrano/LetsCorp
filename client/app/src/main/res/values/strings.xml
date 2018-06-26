@@ -23,6 +23,7 @@
     <string name="favorite_successfully">收藏成功</string>
     <string name="menu_share">分享</string>
     <string name="menu_download">下载</string>
+    <string name="waiting_for_fetching">等待数据加载完毕&#8230;</string>
 
     <string name="menu_item_share">分享到&#8230;</string>
     <string name="menu_item_open">用&#8230;打开</string>

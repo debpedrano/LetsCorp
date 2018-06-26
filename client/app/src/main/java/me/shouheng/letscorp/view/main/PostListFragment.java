@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import me.shouheng.commons.util.ToastUtils;
 import me.shouheng.commons.widget.DividerItemDecoration;
 import me.shouheng.letscorp.R;
+import me.shouheng.letscorp.common.PrefUtils;
 import me.shouheng.letscorp.databinding.FragmentPostListBinding;
 import me.shouheng.letscorp.model.article.CategoryInfo;
 import me.shouheng.letscorp.model.article.PostItem;
@@ -78,9 +79,12 @@ public class PostListFragment extends CommonDaggerFragment<FragmentPostListBindi
 
         getBinding().rv.setAdapter(adapter);
         getBinding().rv.addItemDecoration(new DividerItemDecoration(Objects.requireNonNull(getContext()),
-                DividerItemDecoration.VERTICAL_LIST, false));
+                DividerItemDecoration.VERTICAL_LIST, PrefUtils.getInstance().isNightTheme()));
         getBinding().rv.setLayoutManager(new LinearLayoutManager(getContext()));
         getBinding().rv.setEmptyView(getBinding().ev);
+        if (PrefUtils.getInstance().isNightTheme()) {
+            getBinding().ev.useDarkTheme();
+        }
 
         fetchPostItems(false);
         getBinding().srl.setRefreshing(true);

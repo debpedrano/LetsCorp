@@ -145,6 +145,10 @@ public class ArticleFragment extends CommonDaggerFragment<FragmentArticleBinding
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_favorite:
+                if (post == null || postItem == null) {
+                    ToastUtils.makeToast(R.string.waiting_for_fetching);
+                    break;
+                }
                 favoriteArticle();
                 break;
             case R.id.action_share:
