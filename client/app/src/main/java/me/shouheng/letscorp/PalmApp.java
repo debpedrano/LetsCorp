@@ -14,6 +14,8 @@ import dagger.android.HasActivityInjector;
 import dagger.android.support.HasSupportFragmentInjector;
 import io.fabric.sdk.android.Fabric;
 import me.shouheng.commons.BaseApplication;
+import me.shouheng.commons.util.ThemeUtils;
+import me.shouheng.letscorp.common.PrefUtils;
 import me.shouheng.letscorp.di.DaggerAppComponent;
 
 /**
@@ -38,6 +40,9 @@ public class PalmApp extends BaseApplication implements HasActivityInjector, Has
         }
 
         DaggerAppComponent.builder().application(this).build().inject(this);
+
+        boolean isNight = PrefUtils.getInstance().isNightTheme();
+        ThemeUtils.setUseThemeStatusBarColor(isNight);
     }
 
     @Override

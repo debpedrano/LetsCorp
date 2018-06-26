@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import dagger.android.AndroidInjection;
 import me.shouheng.commons.activity.CommonActivity;
+import me.shouheng.letscorp.R;
+import me.shouheng.letscorp.common.PrefUtils;
 
 /**
  * @author shouh
@@ -15,5 +17,7 @@ public abstract class CommonDaggerActivity<T extends ViewDataBinding> extends Co
     @Override
     protected void beforeCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
+        boolean isNightTheme = PrefUtils.getInstance().isNightTheme();
+        setTheme(isNightTheme ? R.style.AppThemeDark : R.style.AppTheme);
     }
 }

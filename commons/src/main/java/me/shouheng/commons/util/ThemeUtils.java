@@ -5,10 +5,9 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.ColorInt;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
-
-import me.shouheng.commons.R;
 
 /**
  * @author shouh
@@ -18,11 +17,11 @@ public class ThemeUtils {
 
     /**
      * should use colored status bar */
-    private final static boolean useThemeStatusBarColor = false;
+    private static boolean useThemeStatusBarColor = false;
 
     /**
      * status text and image style, true use dark, false light */
-    private final static boolean useStatusBarColor = false;
+    private static boolean useStatusBarColor = false;
 
     public static void customStatusBar(Activity activity) {
         // 5.0 and above
@@ -31,7 +30,9 @@ public class ThemeUtils {
             int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
             decorView.setSystemUiVisibility(option);
             if (useThemeStatusBarColor) {
-                activity.getWindow().setStatusBarColor(PalmUtils.getColorCompact(R.color.colorPrimaryDark));
+                TypedValue typedValue = new TypedValue();
+                activity.getTheme().resolveAttribute(android.R.attr.colorPrimaryDark, typedValue, true);
+                activity.getWindow().setStatusBarColor(typedValue.data);
             } else {
                 activity.getWindow().setStatusBarColor(Color.TRANSPARENT);
             }
@@ -56,5 +57,13 @@ public class ThemeUtils {
     public static void hideSystemUI(Activity activity) {
         activity.runOnUiThread(() -> activity.getWindow().getDecorView().setSystemUiVisibility(
                 SystemUiVisibilityUtil.getSystemVisibility()));
+    }
+
+    public static void setUseThemeStatusBarColor(boolean useThemeStatusBarColor) {
+        ThemeUtils.useThemeStatusBarColor = useThemeStatusBarColor;
+    }
+
+    public static void setUseStatusBarColor(boolean useStatusBarColor) {
+        ThemeUtils.useStatusBarColor = useStatusBarColor;
     }
 }
