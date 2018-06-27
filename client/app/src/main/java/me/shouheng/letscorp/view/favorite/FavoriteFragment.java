@@ -54,8 +54,6 @@ public class FavoriteFragment extends CommonDaggerFragment<FragmentFavoriteBindi
     private void configToolbar() {
         getBinding().toolbar.setTitle(R.string.nav_bottom_item_2);
         getBinding().toolbar.setTitleTextColor(PalmUtils.getColorCompact(R.color.colorAccent));
-        assert getActivity() != null;
-        ((AppCompatActivity) getActivity()).setSupportActionBar(getBinding().toolbar);
     }
 
     private void configList() {

@@ -89,6 +89,7 @@ dependencies {
     implementation "com.android.support:cardview-v7:$supportLibVersion"
     implementation "com.android.support:design:$supportLibVersion"
     implementation "com.android.support:preference-v14:$supportLibVersion"
+    implementation "com.android.support:customtabs:$supportLibVersion"
     // dagger
     implementation "com.google.dagger:dagger:$dagger"
     implementation "com.google.dagger:dagger-android:$dagger"

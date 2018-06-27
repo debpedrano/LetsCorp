@@ -1,7 +1,11 @@
 package me.shouheng.letscorp.common;
 
+import android.content.Context;
+import android.net.Uri;
 import android.os.Environment;
+import android.support.customtabs.CustomTabsIntent;
 import android.text.TextUtils;
+import android.util.TypedValue;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -11,7 +15,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
+import me.shouheng.commons.util.ColorUtils;
 import me.shouheng.commons.util.LogUtils;
+import me.shouheng.commons.util.PalmUtils;
+import me.shouheng.letscorp.R;
 import me.shouheng.letscorp.model.article.Post;
 import me.shouheng.letscorp.model.article.PostItem;
 import me.shouheng.letscorp.model.database.entity.Article;
@@ -107,5 +114,17 @@ public class Util {
         File dir = new File(path);
         if (!dir.exists()) dir.mkdirs();
         return dir;
+    }
+
+    public static void launchUrl(Context context, String url) {
+        boolean isDarkTheme = PrefUtils.getInstance().isNightTheme();
+        int primaryColor = PalmUtils.getColorCompact(isDarkTheme ? R.color.nightColorPrimary : R.color.colorPrimary);
+
+        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+        CustomTabsIntent customTabsIntent = builder
+                .setToolbarColor(primaryColor)
+                .setSecondaryToolbarColor(ColorUtils.calStatusBarColor(primaryColor))
+                .build();
+        customTabsIntent.launchUrl(context, Uri.parse(url));
     }
 }

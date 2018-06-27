@@ -29,6 +29,8 @@
     <string name="menu_item_open">用&#8230;打开</string>
     <string name="menu_item_info">图片信息</string>
 
+    <string name="open_in_browser">在浏览器中打开</string>
+
     <string name="activity_not_found_to_resolve">没有找到可用的程序</string>
     <string name="failed_when_play_audio">播放音频时出现错误</string>
     <string name="failed_to_resolve_intent">没有找到可用的应用</string>

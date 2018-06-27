@@ -1,8 +1,10 @@
 package me.shouheng.letscorp.view.main;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -40,6 +42,9 @@ public class PagerFragment extends CommonDaggerFragment<FragmentPagerBinding> im
     private void configToolbar() {
         getBinding().toolbar.setTitle(R.string.app_name);
         getBinding().toolbar.setTitleTextColor(PalmUtils.getColorCompact(R.color.colorAccent));
+        Activity activity = getActivity();
+        if (activity != null) ((AppCompatActivity) activity).setSupportActionBar(getBinding().toolbar);
+        if (isDarkTheme()) getBinding().toolbar.setPopupTheme(R.style.AppTheme_PopupOverlayDark);
     }
 
     private void configPager() {
@@ -53,9 +58,7 @@ public class PagerFragment extends CommonDaggerFragment<FragmentPagerBinding> im
     }
 
     @Override
-    public void onTabSelected(TabLayout.Tab tab) {
-
-    }
+    public void onTabSelected(TabLayout.Tab tab) { }
 
     @Override
     public void onTabUnselected(TabLayout.Tab tab) { }

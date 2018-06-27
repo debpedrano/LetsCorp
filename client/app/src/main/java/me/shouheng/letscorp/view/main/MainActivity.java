@@ -6,9 +6,12 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import me.shouheng.letscorp.R;
 import me.shouheng.letscorp.common.Constants;
+import me.shouheng.letscorp.common.Util;
 import me.shouheng.letscorp.databinding.ActivityMainBinding;
 import me.shouheng.letscorp.view.CommonDaggerActivity;
 import me.shouheng.letscorp.view.account.AccountFragment;
@@ -123,6 +126,22 @@ public class MainActivity extends CommonDaggerActivity<ActivityMainBinding> {
 
     private void notifyFavoriteChanged() {
         if (favoriteFragment != null) favoriteFragment.fetchData();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.open_in_browser, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_open_in_browser:
+                Util.launchUrl(getContext(), Constants.LETS_CORP_HOST);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

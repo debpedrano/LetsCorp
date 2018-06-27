@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#ffffff</color>
     <color name="colorAccent">#0078FF</color>
 
+    <color name="nightColorPrimary">#34495e</color>
+
     <color name="colorNavItemUnselected">#757575</color>
     <color name="colorNavItemSelected">@color/colorAccent</color>
 

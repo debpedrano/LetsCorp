@@ -144,6 +144,7 @@ public class ArticleFragment extends CommonDaggerFragment<FragmentArticleBinding
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_article, menu);
+        inflater.inflate(R.menu.open_in_browser, menu);
     }
 
     @Override
@@ -163,6 +164,9 @@ public class ArticleFragment extends CommonDaggerFragment<FragmentArticleBinding
                 PermissionUtils.checkStoragePermission(
                         (BaseActivity) Objects.requireNonNull(getActivity()),
                         this::downloadArticle);
+                break;
+            case R.id.action_open_in_browser:
+                Util.launchUrl(getContext(), postItem.getHref());
                 break;
         }
         return super.onOptionsItemSelected(item);
