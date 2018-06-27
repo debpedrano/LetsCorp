@@ -3,8 +3,15 @@ package me.shouheng.letscorp.view.account;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
+import android.widget.TextView;
+
+import java.lang.reflect.Field;
+import java.util.Objects;
 
 import me.shouheng.commons.util.PalmUtils;
 import me.shouheng.letscorp.BuildConfig;
@@ -37,23 +44,17 @@ public class InfoFragment extends PreferenceFragmentCompat {
             return true;
         });
 
-        findPreference(R.string.key_about_app).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                return true;
-            }
+        findPreference(R.string.key_about_app).setOnPreferenceClickListener(preference -> {
+            showAppInfoDialog();
+            return true;
         });
-        findPreference(R.string.key_about_developer).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                return true;
-            }
+        findPreference(R.string.key_about_developer).setOnPreferenceClickListener(preference -> {
+            showDeveloperInfoDialog();
+            return true;
         });
-        findPreference(R.string.key_associated_apps).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                return true;
-            }
+        findPreference(R.string.key_associated_apps).setOnPreferenceClickListener(preference -> {
+            showAssociatedAppsDialog();
+            return true;
         });
         findPreference(R.string.key_update_logs).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
@@ -67,6 +68,51 @@ public class InfoFragment extends PreferenceFragmentCompat {
                 return true;
             }
         });
+    }
+
+    private void showAppInfoDialog() {
+        AlertDialog dialog = new AlertDialog.Builder(Objects.requireNonNull(getContext()))
+                .setTitle(R.string.pref_about_app)
+                .setMessage(Html.fromHtml(PalmUtils.getStringCompact(R.string.pref_about_app_details)))
+                .setPositiveButton(R.string.text_confirm, null)
+                .create();
+        dialog.show();
+        enableLinkClick(dialog);
+    }
+
+    private void showDeveloperInfoDialog() {
+        AlertDialog dialog = new AlertDialog.Builder(Objects.requireNonNull(getContext()))
+                .setTitle(R.string.pref_about_developer)
+                .setMessage(Html.fromHtml(PalmUtils.getStringCompact(R.string.pref_about_developer_details)))
+                .setPositiveButton(R.string.text_confirm, null)
+                .create();
+        dialog.show();
+        enableLinkClick(dialog);
+    }
+
+    private void showAssociatedAppsDialog() {
+        AlertDialog dialog = new AlertDialog.Builder(Objects.requireNonNull(getContext()))
+                .setTitle(R.string.pref_associated_apps)
+                .setMessage(Html.fromHtml(PalmUtils.getStringCompact(R.string.pref_associated_apps_details)))
+                .setPositiveButton(R.string.text_confirm, null)
+                .create();
+        dialog.show();
+        enableLinkClick(dialog);
+    }
+
+    private void enableLinkClick(AlertDialog dialog) {
+        try {
+            Field field = dialog.getClass().getDeclaredField("mAlert");
+            field.setAccessible(true);
+            Field field2 = (field.get(dialog)).getClass().getDeclaredField("mMessageView");
+            field2.setAccessible(true);
+            TextView mMessageView = (TextView) field2.get(field.get(dialog));
+            mMessageView.setMovementMethod(LinkMovementMethod.getInstance());
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
     public Preference findPreference(@StringRes int keyRes) {

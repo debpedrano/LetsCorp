@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">楼外楼</string>
 
+    <string name="text_confirm">确定</string>
+    <string name="text_cancel">取消</string>
+
     <string name="nav_bottom_item_1">主界面</string>
     <string name="nav_bottom_item_2">收藏</string>
     <string name="nav_bottom_item_3">我</string>
@@ -46,10 +49,13 @@
     <string name="pref_night_theme">夜间主题</string>
     <string name="pref_about">关于</string>
     <string name="pref_about_app">关于应用</string>
+    <string name="pref_about_app_details">楼外楼是一款质感设计的新闻App，它的内容来自于墙外楼，所以它算是墙外楼的三方客户端。有诗云「山外青山楼外楼」，墙外楼之外的楼，故名为楼外楼。<![CDATA[<br/><br/>]]>本项目是开源的，项目地址是<![CDATA[<a href="https://github.com/Shouheng88/LetsCorp">LetsCorp</a>]]>。本项目在开发的过程中也参考了另一款开源的App：<![CDATA[<a href="https://github.com/wiiiky/letscorp">letscorp</a>]]>。<![CDATA[<br/><br/>]]>该项目主要有两个宗旨，一个是用来练习Android，另一个是用来解决使用墙外楼官方客户端过程中的诸多不便。<![CDATA[<br/><br/>]]>如该项目涉嫌侵权，请及时告知开发者，我会在第一时间将项目删除。</string>
     <string name="pref_about_developer">关于开发者</string>
     <string name="pref_about_developer_sub">WngShhng (shouheng2015@gmail.com)</string>
+    <string name="pref_about_developer_details">你可以通过下面任意一种方式联系到我：<![CDATA[<br/><br/>]]><![CDATA[<a href="https://weibo.com/5401152113/profile?rightmod=1&wvr=6&mod=personinfo">微博</>]]><![CDATA[<br/><br/>]]><![CDATA[<a href="https://github.com/Shouheng88">Github</>]]><![CDATA[<br/><br/>]]><![CDATA[<a href="https://plus.google.com/u/1/communities/116504001089806046736">Google+社区</>]]></string>
     <string name="pref_associated_apps">开发者的其他应用</string>
     <string name="pref_associated_apps_sub">点击看一下有没有自己需要的应用</string>
+    <string name="pref_associated_apps_details">开发还开发了一款Markdown语法支持的笔记应用，你可以在酷安网上面得到它：<![CDATA[<a href="https://developer.coolapk.com/do?c=apk&m=edit&id=178276">马克笔记，</>]]>以及一款时间管理类型的应用<![CDATA[<a href="https://developer.coolapk.com/do?c=apk&m=edit&id=185660">多功能清单</>]]>。如果你是一名开发者，还可以访问作者的Github主页：<![CDATA[<a href="https://github.com/Shouheng88">WngShhng</>]]>。</string>
     <string name="pref_update_logs">更新日志</string>
     <string name="pref_open_source_license">开源许可</string>
 </resources>
