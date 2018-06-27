@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 
 import dagger.android.support.AndroidSupportInjection;
 import me.shouheng.commons.fragment.CommonFragment;
+import me.shouheng.letscorp.common.PrefUtils;
 
 /**
  * @author shouh
@@ -28,5 +29,9 @@ public abstract class CommonDaggerFragment<T extends ViewDataBinding> extends Co
     @NonNull
     public LifecycleRegistry getLifecycle() {
         return lifecycleRegistry;
+    }
+
+    public boolean isDarkTheme() {
+        return PrefUtils.getInstance().isNightTheme();
     }
 }

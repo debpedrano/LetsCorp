@@ -75,6 +75,10 @@ public class FavoriteFragment extends CommonDaggerFragment<FragmentFavoriteBindi
         if (PrefUtils.getInstance().isNightTheme()) {
             getBinding().ev.useDarkTheme();
         }
+        getBinding().rv.getFastScrollDelegate().setThumbDrawable(PalmUtils.getDrawableCompact(
+                isDarkTheme() ? R.drawable.fast_scroll_bar_dark : R.drawable.fast_scroll_bar_light));
+        getBinding().rv.getFastScrollDelegate().setThumbSize(16, 40);
+        getBinding().rv.getFastScrollDelegate().setThumbDynamicHeight(false);
 
         fetchData();
         getBinding().srl.setRefreshing(true);

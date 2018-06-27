@@ -20,6 +20,7 @@ import javax.inject.Inject;
 
 import me.shouheng.commons.activity.BaseActivity;
 import me.shouheng.commons.helper.FileHelper;
+import me.shouheng.commons.util.PalmUtils;
 import me.shouheng.commons.util.PermissionUtils;
 import me.shouheng.commons.util.ToastUtils;
 import me.shouheng.letscorp.R;
@@ -107,6 +108,10 @@ public class ArticleFragment extends CommonDaggerFragment<FragmentArticleBinding
         getBinding().rv.setEmptyView(getBinding().pb);
         getBinding().rv.setAdapter(adapter);
         getBinding().rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        getBinding().rv.getFastScrollDelegate().setThumbDrawable(PalmUtils.getDrawableCompact(
+                isDarkTheme() ? R.drawable.fast_scroll_bar_dark : R.drawable.fast_scroll_bar_light));
+        getBinding().rv.getFastScrollDelegate().setThumbSize(16, 40);
+        getBinding().rv.getFastScrollDelegate().setThumbDynamicHeight(false);
     }
 
     private void fetchPostDetail() {

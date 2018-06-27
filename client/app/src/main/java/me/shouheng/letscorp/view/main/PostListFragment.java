@@ -8,8 +8,11 @@ import java.util.Objects;
 
 import javax.inject.Inject;
 
+import me.shouheng.commons.util.PalmUtils;
 import me.shouheng.commons.util.ToastUtils;
 import me.shouheng.commons.widget.DividerItemDecoration;
+import me.shouheng.commons.widget.fastscroll.FastScrollDelegate.IndicatorPopup;
+import me.shouheng.letscorp.PalmApp;
 import me.shouheng.letscorp.R;
 import me.shouheng.letscorp.common.PrefUtils;
 import me.shouheng.letscorp.databinding.FragmentPostListBinding;
@@ -85,6 +88,10 @@ public class PostListFragment extends CommonDaggerFragment<FragmentPostListBindi
         if (PrefUtils.getInstance().isNightTheme()) {
             getBinding().ev.useDarkTheme();
         }
+        getBinding().rv.getFastScrollDelegate().setThumbDrawable(PalmUtils.getDrawableCompact(
+                isDarkTheme() ? R.drawable.fast_scroll_bar_dark : R.drawable.fast_scroll_bar_light));
+        getBinding().rv.getFastScrollDelegate().setThumbSize(16, 40);
+        getBinding().rv.getFastScrollDelegate().setThumbDynamicHeight(false);
 
         fetchPostItems(false);
         getBinding().srl.setRefreshing(true);
