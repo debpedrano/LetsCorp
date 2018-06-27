@@ -13,6 +13,7 @@ import android.widget.TextView;
 import java.lang.reflect.Field;
 import java.util.Objects;
 
+import de.psdev.licensesdialog.LicensesDialog;
 import me.shouheng.commons.util.PalmUtils;
 import me.shouheng.letscorp.BuildConfig;
 import me.shouheng.letscorp.R;
@@ -56,17 +57,17 @@ public class InfoFragment extends PreferenceFragmentCompat {
             showAssociatedAppsDialog();
             return true;
         });
-        findPreference(R.string.key_update_logs).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                return true;
-            }
+        findPreference(R.string.key_update_logs).setOnPreferenceClickListener(preference -> {
+            showChangeLogDialog();
+            return true;
         });
-        findPreference(R.string.key_open_source_license).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                return true;
-            }
+        findPreference(R.string.key_open_source_license).setOnPreferenceClickListener(preference -> {
+            new LicensesDialog.Builder(Objects.requireNonNull(getContext()))
+                    .setNotices(R.raw.notices)
+                    .setIncludeOwnLicense(true)
+                    .build()
+                    .showAppCompat();
+            return true;
         });
     }
 
@@ -113,6 +114,14 @@ public class InfoFragment extends PreferenceFragmentCompat {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
+    }
+
+    private void showChangeLogDialog() {
+        new AlertDialog.Builder(Objects.requireNonNull(getContext()))
+                .setTitle(R.string.pref_update_logs)
+                .setView(R.layout.dialog_changelog)
+                .setPositiveButton(R.string.text_confirm, null)
+                .create().show();
     }
 
     public Preference findPreference(@StringRes int keyRes) {
